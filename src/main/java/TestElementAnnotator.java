@@ -72,7 +72,8 @@ public class TestElementAnnotator extends CasAnnotator_ImplBase
 			q.setBegin(questionBegin);
 			q.setEnd(pos);
 			q.setText(text.substring(question.start()+2,question.end()));
-
+			q.setAnnotator(this.getClass().getName());
+			
 			// Annotate the answers
 			List<Answer> as = new LinkedList<Answer>();
 			while(answers.find(pos))
@@ -95,6 +96,7 @@ public class TestElementAnnotator extends CasAnnotator_ImplBase
 				ans.setNumber(Integer.parseInt(toks[0].substring(1)));
 				ans.setCorrect(Integer.parseInt(toks[1])==1);
 				ans.setText(anstext); // a bit redundant, but this is a simple annotator  
+				ans.setAnnotator(this.getClass().getName());
 				as.add(ans);
 
 				pos = end; //move to next answer choice
@@ -110,6 +112,7 @@ public class TestElementAnnotator extends CasAnnotator_ImplBase
 			te.setAnswers(a);
 			te.setBegin(questionBegin);
 			te.setEnd(pos);
+			te.setAnnotator(this.getClass().getName());
 			te.addToIndexes();
 		}
 	}
