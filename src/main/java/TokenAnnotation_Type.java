@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 /** Subclass of SelfAwareAnnotation holding tokenization annotations for a TestElement.
 
 Fields inherited from SelfAwareAnnotation:	begin, end, annotator
- * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
  * @generated */
 public class TokenAnnotation_Type extends SelfAwareAnnotation_Type {
   /** @generated 

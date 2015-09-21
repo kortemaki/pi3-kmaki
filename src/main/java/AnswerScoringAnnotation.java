@@ -12,8 +12,8 @@ import org.apache.uima.jcas.cas.FloatArray;
 /** Subclass of SelfAwareAnnotation holding answer scoring annotations for a TestElement.
 
 Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
- * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
- * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
+ * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
+ * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/java/TestElementAnnotator.xml
  * @generated */
 public class AnswerScoringAnnotation extends SelfAwareAnnotation {
   /** @generated

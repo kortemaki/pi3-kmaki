@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 /** Subclass of Span which annotates a tokenization for its span.
 
 Fields inherited from Span: 	begin, end, annotator, text
- * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
  * @generated */
 public class TokenizedSpan_Type extends Span_Type {
   /** @generated 

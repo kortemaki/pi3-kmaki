@@ -12,8 +12,8 @@ import org.apache.uima.jcas.cas.FSList;
 /** Subclass of Span annotating selected ngrams for the given span.
 
 Fields inherited from Span: begin, end, annotator, text
- * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
- * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
+ * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
+ * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/java/TestElementAnnotator.xml
  * @generated */
 public class NgramSet extends Span {
   /** @generated

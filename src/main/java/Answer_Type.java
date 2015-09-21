@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 /** Subclass of span annotating an answer choice for a particular TestElement.  Is aware of whether it is a correct answer choice or not.
 
 Fields inherited from Span: 	begin, end, annotator, text
- * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
  * @generated */
 public class Answer_Type extends Span_Type {
   /** @generated 

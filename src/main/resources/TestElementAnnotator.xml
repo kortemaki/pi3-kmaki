@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>false</primitive>  <analysisEngineMetaData>
-    <name>PI3AnalysisEngine</name>
-    <description>Sequentially performs the following annotation operations on each artifact:
+  <primitive>true</primitive>  <annotatorImplementationName>TestElementAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>TestElementAnnotator</name>
+    <description>Annotates questions and answers in an artifact.
 
-Test Element Annotation
-Token Annotation
-N-gram Annotation
-Answer Scoring
-</description>
+Questions take the form:
+Q &lt;question&gt;
+
+Answers take the form:
+A&lt;# answer&gt; &lt;gold standard label&gt; &lt;answer&gt;
+
+Example of the input:
+Q John loves Mary?
+A1 1 John loves Mary with all his heart.
+A2 1 Mary is dearly loved by John.
+A3 0 Mary doesn't love John.
+A4 0 John doesn't love Mary.
+A5 1 John loves Mary.</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
-    <flowConstraints>
-      <fixedFlow/>
-    </flowConstraints>
+    <typeSystemDescription>
+      <imports>
+        <import name="pi2-kmaki-typesystem"/>
+      </imports>
+    </typeSystemDescription>
     <typePriorities/>
     <fsIndexCollection/>
     <capabilities>

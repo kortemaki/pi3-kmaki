@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 /** Subclass of SelfAwareAnnotation.  Annotates a span of text with a String that may encode information about the span of text.
 
 Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
- * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
  * @generated */
 public class Span_Type extends SelfAwareAnnotation_Type {
   /** @generated 
