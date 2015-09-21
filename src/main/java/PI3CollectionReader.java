@@ -77,6 +77,11 @@ public class PI3CollectionReader extends org.apache.uima.collection.CollectionRe
 	 */
 	public static final String PARAM_SUBDIR = "BrowseSubdirectories";
 
+	/**
+	 * Regex against which to match potential files in the input directory
+	 */
+	private static final String PARAM_REGEX = "Regex";
+
 	private ArrayList<File> mFiles;
 
 	private String mEncoding;
@@ -123,7 +128,7 @@ public class PI3CollectionReader extends org.apache.uima.collection.CollectionRe
 		File[] files = dir.listFiles();
 	  	for (int i = 0; i < files.length; i++) {
 	  		if (!files[i].isDirectory() &&
-	  			files[i].getName().matches("^q\\d+\\.txt$")) {
+	  			files[i].getName().matches((String) getConfigParameterValue(PARAM_REGEX))) {
 	  			mFiles.add(files[i]);  
 	  		} else if (mRecursive) {
 				addFilesFromDir(files[i]);
