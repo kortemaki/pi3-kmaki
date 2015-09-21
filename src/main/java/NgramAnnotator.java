@@ -59,7 +59,7 @@ public class NgramAnnotator extends CasAnnotator_ImplBase {
 
 		String name = this.getClass().getName();
 		
-		// Get the Test Element Annotations for the document
+		// Get the Token Annotations for each Test Element in the document
 		FSIndex<TokenAnnotation> teIndex = (FSIndex) ((JCas) aCas).getAnnotationIndex(TokenAnnotation.type);
 
 		// Iterate over them in sequence
@@ -140,33 +140,4 @@ public class NgramAnnotator extends CasAnnotator_ImplBase {
 		
 		return String.join(" ",strings);
 	}
-		// Tokenize the text
-		int tokstart = begin;
-		int tokend = begin;
-		List<Span> toks = new LinkedList<Span>();
-		FSList toks = new FSList(jcas);
-		StringTokenizer st = new StringTokenizer(text);
-		while (st.hasMoreTokens()) {
-			String thisTok = st.nextToken();
-			tokstart = text.indexOf(thisTok, tokend);
-			tokend = begin + thisTok.length();
-			Span tok = new Span();
-			tok.setBegin(tokstart);
-			tok.setText(thisTok);
-			tok.setEnd(tokend);
-			tok.setAnnotator(name);
-			toks.add(tok);
-		}
-		
-		// Finalize tokenized span output
-		TokenizedSpan output = new TokenizedSpan();
-		output.setTokens(tokens);
-		output.setBegin(begin);
-		output.setText(text);
-		output.setEnd(end);
-		output.setAnnotator(name);
-		
-		return output;
-	}
-	
 }

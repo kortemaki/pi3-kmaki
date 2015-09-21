@@ -39,3 +39,4 @@
 /TestElementAnnotator.class
 /TokenizationAnnotator.class
 /NgramAnnotator.class
+/ScoreAnnotator.class
