@@ -32,62 +32,119 @@ import org.apache.uima.cas.text.AnnotationFS;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.FSList;
+import org.apache.uima.resource.ResourceInitializationException;
 
 /**
- * A simple tokenization annotator for PI3
+ * A simple ngram annotator for PI3.
  * 
- * Expects each CAS to contain at least one TestElementAnnotation
- * Processes each TestElementAnnotation by adding a corresponding TokenAnnotation
+ * Expects each CAS to contain at least one TokenAnnotation.
+ * Processes each TokenAnnotation by adding a corresponding TokenAnnotation to the CAS.
  * 
- * This annotator has no configuration parameters, and requires no initialization method
+ * This annotator has a single configuration parameters, NgramSize,
+ *    that configures the length of ngrams to be annotated.
+ * It requires no initialization method.
  */
 
-public class TokenizationAnnotator extends CasAnnotator_ImplBase {
+public class NgramAnnotator extends CasAnnotator_ImplBase {
+	
+	private int n;
+	
+	public void initialize() throws ResourceInitializationException
+	{
+		this.n = (int) getUimaContext().getConfigParameterValue("NgramSize");
+	}
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void process(CAS aCas) throws AnalysisEngineProcessException {
+
+		String name = this.getClass().getName();
 		
 		// Get the Test Element Annotations for the document
-		FSIndex<TestElementAnnotation> teIndex = (FSIndex) ((JCas) aCas).getAnnotationIndex(TestElementAnnotation.type);
+		FSIndex<TokenAnnotation> teIndex = (FSIndex) ((JCas) aCas).getAnnotationIndex(TokenAnnotation.type);
 
 		// Iterate over them in sequence
-		for(TestElementAnnotation te : teIndex)
+		for(TokenAnnotation te : teIndex)
 		{
 			// Create the TokenAnnotation for this test element
-			TokenAnnotation annot = new TokenAnnotation(); 
-			Span question = te.getQuestion();
-			annot.setQuestionTokens(this.tokenize(question,(JCas) aCas));
-			FSArray answers = te.getAnswers();
+			NgramAnnotation annot = new NgramAnnotation(); 
+			TokenizedSpan question = te.getQuestionTokens();
+			annot.setQuestionNgrams(this.ngramize(question,(JCas) aCas,name));
+			FSArray answers = te.getAnswersTokens();
 			FSArray anstoks = new FSArray((JCas) aCas, answers.size());
 			for(int i=0; i<answers.size(); i++)
 			{
-				Answer answer = (Answer) answers.get(i);
-				anstoks.set(i, this.tokenize(answer,(JCas) aCas));
+				TokenizedSpan answer = (TokenizedSpan) answers.get(i);
+				anstoks.set(i, this.ngramize(answer,(JCas) aCas,name));
 			}
 			annot.setBegin(te.getBegin());
 			annot.setEnd(te.getEnd());
-			annot.setAnnotator(this.getClass().getName());
+			annot.setAnnotator(name);
 			
 			annot.addToIndexes();
 		}
 	}
 
 	/**
-	 * Tokenizes a given Span and returns the tokenization as a TokenizedSpan
+	 * Ngramizes the tokens of a given TokenizedSpan and returns the ngrams as an NgramSet
 	 * 
 	 * @param span the span to tokenize
 	 * @return
 	 */
-	private TokenizedSpan tokenize(Span span, JCas jcas)
+	private NgramSet ngramize(TokenizedSpan tokens, JCas jcas, String name)
 	{
-		// Extract relevant fields from span
-		String text = span.getText();
-		int begin = span.getBegin();
-		int end = span.getEnd();
 		
+		// Extract relevant fields from span
+		FSList tokList = tokens.getTokens();
+		int begin = tokens.getBegin();
+		int end = tokens.getEnd();
+		
+		NgramSet ngrams = new NgramSet();
+		ngrams.setBegin(begin);
+		ngrams.setEnd(end);
+		ngrams.setText(tokens.getText());
+		ngrams.setAnnotator(this.getClass().getName());
+		
+		//TODO: convert tokList to Span array
+		Span[] toks;
+		
+		for(int i=0; i<toks.length+1-this.n; i++)
+		{
+			//copy the relevant tokens into ngram
+			Span[] gram = new Span[this.n];
+			for(int j=0; j<this.n; j++)
+			{
+				gram[j] = toks[i+j];
+			}
+
+			Ngram ngram = new Ngram();
+			ngram.setN(this.n);
+			ngram.setBegin(toks[i].getBegin());
+			ngram.setEnd(toks[i+this.n-1].getEnd());
+			ngram.setText(getTextForSpansIn(Arrays.copyOfRange(toks, i, i+this.n)));
+			ngram.setAnnotator(this.getClass().getName());
+			//TODO: convert gram to FSList();
+			
+			ngram.setTokens(gram);
+			
+		}
+		
+		
+	}
+	private String getTextForSpansIn(Span[] arr)
+	{
+		String[] strings = new String[arr.length];
+		for(int i = 0; i < arr.length; i++)
+		{
+			strings[i] = arr[i].getText();
+		}
+		
+		return String.join(" ",strings);
+	}
 		// Tokenize the text
 		int tokstart = begin;
 		int tokend = begin;
 		List<Span> toks = new LinkedList<Span>();
+		FSList toks = new FSList(jcas);
 		StringTokenizer st = new StringTokenizer(text);
 		while (st.hasMoreTokens()) {
 			String thisTok = st.nextToken();
@@ -97,20 +154,13 @@ public class TokenizationAnnotator extends CasAnnotator_ImplBase {
 			tok.setBegin(tokstart);
 			tok.setText(thisTok);
 			tok.setEnd(tokend);
-			tok.setAnnotator(this.getClass().getName());
+			tok.setAnnotator(name);
 			toks.add(tok);
 		}
 		
 		// Finalize tokenized span output
-		FSList tokens = new FSList(jcas);
-		for(Span token : toks)
-		{
-			tokens.addToIndexes(token);
-		}
-		
-		
 		TokenizedSpan output = new TokenizedSpan();
-		output.setTokens(toks);
+		output.setTokens(tokens);
 		output.setBegin(begin);
 		output.setText(text);
 		output.setEnd(end);
