@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 /** Subclass of TokenizedSpan which annotates a subset of a tokenization corresponding to an ngram of finite length n.
 
 Fields inherited from TokenizedSpan:	begin, end, annotator, text, tokens
- * Updated by JCasGen Mon Sep 21 10:12:56 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
  * @generated */
 public class Ngram_Type extends TokenizedSpan_Type {
   /** @generated 

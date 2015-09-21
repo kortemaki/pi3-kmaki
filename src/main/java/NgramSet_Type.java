@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 /** Subclass of Span annotating selected ngrams for the given span.
 
 Fields inherited from Span: begin, end, annotator, text
- * Updated by JCasGen Mon Sep 21 10:12:56 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
  * @generated */
 public class NgramSet_Type extends Span_Type {
   /** @generated 

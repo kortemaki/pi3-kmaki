@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 /** Subclass of span annotating an answer choice for a particular TestElement.  Is aware of whether it is a correct answer choice or not.
 
 Fields inherited from Span: 	begin, end, annotator, text
- * Updated by JCasGen Mon Sep 21 10:12:56 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
  * @generated */
 public class Answer_Type extends Span_Type {
   /** @generated 
@@ -69,6 +69,30 @@ public class Answer_Type extends Span_Type {
     ll_cas.ll_setBooleanValue(addr, casFeatCode_correct, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_number;
+  /** @generated */
+  final int     casFeatCode_number;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getNumber(int addr) {
+        if (featOkTst && casFeat_number == null)
+      jcas.throwFeatMissing("number", "Answer");
+    return ll_cas.ll_getIntValue(addr, casFeatCode_number);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setNumber(int addr, int v) {
+        if (featOkTst && casFeat_number == null)
+      jcas.throwFeatMissing("number", "Answer");
+    ll_cas.ll_setIntValue(addr, casFeatCode_number, v);}
+    
+  
 
 
 
@@ -84,6 +108,10 @@ public class Answer_Type extends Span_Type {
  
     casFeat_correct = jcas.getRequiredFeatureDE(casType, "correct", "uima.cas.Boolean", featOkTst);
     casFeatCode_correct  = (null == casFeat_correct) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_correct).getCode();
+
+ 
+    casFeat_number = jcas.getRequiredFeatureDE(casType, "number", "uima.cas.Integer", featOkTst);
+    casFeatCode_number  = (null == casFeat_number) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_number).getCode();
 
   }
 }

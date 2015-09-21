@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>  <annotatorImplementationName>TestElementAnnotator.java</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>TestElementAnnotator</name>
+    <description>Annotates questions and answers in an artifact.
+
+Questions take the form:
+Q &lt;question&gt;
+
+Answers take the form:
+A&lt;# answer&gt; &lt;gold standard label&gt; &lt;answer&gt;
+
+Example of the input:
+Q John loves Mary?
+A1 1 John loves Mary with all his heart.
+A2 1 Mary is dearly loved by John.
+A3 0 Mary doesn't love John.
+A4 0 John doesn't love Mary.
+A5 1 John loves Mary.</description>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+        <import name="pi2-kmaki-typesystem"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

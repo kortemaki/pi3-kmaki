@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 /** Subclass of SelfAwareAnnotation holding ngram annotations for a TestElement.
 
 Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
- * Updated by JCasGen Mon Sep 21 10:12:56 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
  * @generated */
 public class NgramAnnotation_Type extends SelfAwareAnnotation_Type {
   /** @generated 
@@ -103,7 +103,7 @@ public class NgramAnnotation_Type extends SelfAwareAnnotation_Type {
     if (lowLevelTypeChecks)
       return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_answersNgrams), i, true);
     jcas.checkArrayBounds(ll_cas.ll_getRefValue(addr, casFeatCode_answersNgrams), i);
-	return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_answersNgrams), i);
+  return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_answersNgrams), i);
   }
    
   /** @generated

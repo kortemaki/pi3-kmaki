@@ -15,7 +15,7 @@ import org.apache.uima.jcas.tcas.Annotation_Type;
 /** Annotation subclass which is aware of the annotator that produced it.
 
 Fields inherited from Annotation:	begin, end
- * Updated by JCasGen Mon Sep 21 10:12:56 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
  * @generated */
 public class SelfAwareAnnotation_Type extends Annotation_Type {
   /** @generated 

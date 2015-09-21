@@ -93,6 +93,11 @@ Fields inherited from Span: 	begin, end, annotator, text</description>
           <description>Indicates correctness of this Span as an answer choice under "gold" labels.</description>
           <rangeTypeName>uima.cas.Boolean</rangeTypeName>
         </featureDescription>
+      <featureDescription>
+          <name>number</name>
+          <description>The integer answer number of this answer choice.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>

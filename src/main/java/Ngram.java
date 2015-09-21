@@ -11,7 +11,7 @@ import org.apache.uima.jcas.cas.TOP_Type;
 /** Subclass of TokenizedSpan which annotates a subset of a tokenization corresponding to an ngram of finite length n.
 
 Fields inherited from TokenizedSpan:	begin, end, annotator, text, tokens
- * Updated by JCasGen Mon Sep 21 10:12:56 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:28:24 EDT 2015
  * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
  * @generated */
 public class Ngram extends TokenizedSpan {
