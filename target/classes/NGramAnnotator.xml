@@ -18,7 +18,14 @@ Parameterizable using the NgramSize parameter</description>
         <mandatory>true</mandatory>
       </configurationParameter>
     </configurationParameters>
-    <configurationParameterSettings/>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>NgramAnnotator</name>
+        <value>
+          <integer>1</integer>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
     <typeSystemDescription/>
     <typePriorities/>
     <fsIndexCollection/>

@@ -6,6 +6,18 @@
     <delegateAnalysisEngine key="TestElementAnnotator">
       <import name="TestElementAnnotator"/>
     </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="TokenizationAnnotator">
+      <import name="TokenizationAnnotator"/>
+    
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="NGramAnnotator">
+      <import name="NGramAnnotator"/>
+    
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ScoreAnnotator">
+      <import name="ScoreAnnotator"/>
+    
+    </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>PI3AnalysisEngine</name>
@@ -22,6 +34,9 @@ Answer Scoring</description>
     <flowConstraints>
       <fixedFlow>
         <node>TestElementAnnotator</node>
+      <node>TokenizationAnnotator</node>
+        <node>NGramAnnotator</node>
+        <node>ScoreAnnotator</node>
       </fixedFlow>
     </flowConstraints>
     <typePriorities/>
