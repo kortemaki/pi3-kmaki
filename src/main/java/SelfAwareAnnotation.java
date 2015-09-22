@@ -12,8 +12,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 /** Annotation subclass which is aware of the annotator that produced it.
 
 Fields inherited from Annotation:	begin, end
- * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
- * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/java/TestElementAnnotator.xml
+ * Updated by JCasGen Mon Sep 21 21:54:12 EDT 2015
+ * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
  * @generated */
 public class SelfAwareAnnotation extends Annotation {
   /** @generated

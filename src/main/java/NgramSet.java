@@ -6,14 +6,17 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
 
+import org.apache.uima.jcas.cas.FSArray;
+
+
 import org.apache.uima.jcas.cas.FSList;
 
 
 /** Subclass of Span annotating selected ngrams for the given span.
 
 Fields inherited from Span: begin, end, annotator, text
- * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
- * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/java/TestElementAnnotator.xml
+ * Updated by JCasGen Mon Sep 21 21:54:12 EDT 2015
+ * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
  * @generated */
 public class NgramSet extends Span {
   /** @generated
@@ -80,23 +83,45 @@ public class NgramSet extends Span {
   //*--------------*
   //* Feature: ngrams
 
-  /** getter for ngrams - gets List of ngrams identified for this Span.
+  /** getter for ngrams - gets Array of ngrams identified for this Span.
    * @generated
    * @return value of the feature 
    */
-  public FSList getNgrams() {
+  public FSArray getNgrams() {
     if (NgramSet_Type.featOkTst && ((NgramSet_Type)jcasType).casFeat_ngrams == null)
       jcasType.jcas.throwFeatMissing("ngrams", "NgramSet");
-    return (FSList)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((NgramSet_Type)jcasType).casFeatCode_ngrams)));}
+    return (FSArray)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((NgramSet_Type)jcasType).casFeatCode_ngrams)));}
     
-  /** setter for ngrams - sets List of ngrams identified for this Span. 
+  /** setter for ngrams - sets Array of ngrams identified for this Span. 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setNgrams(FSList v) {
+  public void setNgrams(FSArray v) {
     if (NgramSet_Type.featOkTst && ((NgramSet_Type)jcasType).casFeat_ngrams == null)
       jcasType.jcas.throwFeatMissing("ngrams", "NgramSet");
     jcasType.ll_cas.ll_setRefValue(addr, ((NgramSet_Type)jcasType).casFeatCode_ngrams, jcasType.ll_cas.ll_getFSRef(v));}    
+    
+  /** indexed getter for ngrams - gets an indexed value - Array of ngrams identified for this Span.
+   * @generated
+   * @param i index in the array to get
+   * @return value of the element at index i 
+   */
+  public Ngram getNgrams(int i) {
+    if (NgramSet_Type.featOkTst && ((NgramSet_Type)jcasType).casFeat_ngrams == null)
+      jcasType.jcas.throwFeatMissing("ngrams", "NgramSet");
+    jcasType.jcas.checkArrayBounds(jcasType.ll_cas.ll_getRefValue(addr, ((NgramSet_Type)jcasType).casFeatCode_ngrams), i);
+    return (Ngram)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefArrayValue(jcasType.ll_cas.ll_getRefValue(addr, ((NgramSet_Type)jcasType).casFeatCode_ngrams), i)));}
+
+  /** indexed setter for ngrams - sets an indexed value - Array of ngrams identified for this Span.
+   * @generated
+   * @param i index in the array to set
+   * @param v value to set into the array 
+   */
+  public void setNgrams(int i, Ngram v) { 
+    if (NgramSet_Type.featOkTst && ((NgramSet_Type)jcasType).casFeat_ngrams == null)
+      jcasType.jcas.throwFeatMissing("ngrams", "NgramSet");
+    jcasType.jcas.checkArrayBounds(jcasType.ll_cas.ll_getRefValue(addr, ((NgramSet_Type)jcasType).casFeatCode_ngrams), i);
+    jcasType.ll_cas.ll_setRefArrayValue(jcasType.ll_cas.ll_getRefValue(addr, ((NgramSet_Type)jcasType).casFeatCode_ngrams), i, jcasType.ll_cas.ll_getFSRef(v));}
   }
 
     

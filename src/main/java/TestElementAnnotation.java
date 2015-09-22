@@ -9,11 +9,9 @@ import org.apache.uima.jcas.cas.TOP_Type;
 import org.apache.uima.jcas.cas.FSArray;
 
 
-/** Subclass of SelfAwareAnnotation holding question and Answer Span annotations for a TestElement.
-
-Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
- * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
- * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/java/TestElementAnnotator.xml
+/** A basic form for test element annotations.  Contains the number of this test elements' question and the correctness array for this test element's answers.
+ * Updated by JCasGen Mon Sep 21 21:54:12 EDT 2015
+ * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
  * @generated */
 public class TestElementAnnotation extends SelfAwareAnnotation {
   /** @generated
@@ -80,20 +78,20 @@ public class TestElementAnnotation extends SelfAwareAnnotation {
   //*--------------*
   //* Feature: question
 
-  /** getter for question - gets Identifies the question for this TestElement.
+  /** getter for question - gets The Span associated with the question for this annotation.  Also contains the question number.
    * @generated
    * @return value of the feature 
    */
-  public Span getQuestion() {
+  public Question getQuestion() {
     if (TestElementAnnotation_Type.featOkTst && ((TestElementAnnotation_Type)jcasType).casFeat_question == null)
       jcasType.jcas.throwFeatMissing("question", "TestElementAnnotation");
-    return (Span)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((TestElementAnnotation_Type)jcasType).casFeatCode_question)));}
+    return (Question)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((TestElementAnnotation_Type)jcasType).casFeatCode_question)));}
     
-  /** setter for question - sets Identifies the question for this TestElement. 
+  /** setter for question - sets The Span associated with the question for this annotation.  Also contains the question number. 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setQuestion(Span v) {
+  public void setQuestion(Question v) {
     if (TestElementAnnotation_Type.featOkTst && ((TestElementAnnotation_Type)jcasType).casFeat_question == null)
       jcasType.jcas.throwFeatMissing("question", "TestElementAnnotation");
     jcasType.ll_cas.ll_setRefValue(addr, ((TestElementAnnotation_Type)jcasType).casFeatCode_question, jcasType.ll_cas.ll_getFSRef(v));}    

@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Mon Sep 21 10:12:56 EDT 2015 */
+/* First created by JCasGen Mon Sep 21 21:54:12 EDT 2015 */
 
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
@@ -11,12 +11,10 @@ import org.apache.uima.cas.Type;
 import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
-/** Subclass of SelfAwareAnnotation.  Annotates a span of text with a String that may encode information about the span of text.
-
-Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
+/** A final annotation to hold the filename and contents of an output file.
  * Updated by JCasGen Mon Sep 21 21:54:12 EDT 2015
  * @generated */
-public class Span_Type extends SelfAwareAnnotation_Type {
+public class OutputAnnotation_Type extends TestElementAnnotation_Type {
   /** @generated 
    * @return the generator for this type
    */
@@ -26,25 +24,49 @@ public class Span_Type extends SelfAwareAnnotation_Type {
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
-  			 if (Span_Type.this.useExistingInstance) {
+  			 if (OutputAnnotation_Type.this.useExistingInstance) {
   			   // Return eq fs instance if already created
-  		     FeatureStructure fs = Span_Type.this.jcas.getJfsFromCaddr(addr);
+  		     FeatureStructure fs = OutputAnnotation_Type.this.jcas.getJfsFromCaddr(addr);
   		     if (null == fs) {
-  		       fs = new Span(addr, Span_Type.this);
-  			   Span_Type.this.jcas.putJfsFromCaddr(addr, fs);
+  		       fs = new OutputAnnotation(addr, OutputAnnotation_Type.this);
+  			   OutputAnnotation_Type.this.jcas.putJfsFromCaddr(addr, fs);
   			   return fs;
   		     }
   		     return fs;
-        } else return new Span(addr, Span_Type.this);
+        } else return new OutputAnnotation(addr, OutputAnnotation_Type.this);
   	  }
     };
   /** @generated */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = Span.typeIndexID;
+  public final static int typeIndexID = OutputAnnotation.typeIndexID;
   /** @generated 
      @modifiable */
   @SuppressWarnings ("hiding")
-  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("Span");
+  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("OutputAnnotation");
+ 
+  /** @generated */
+  final Feature casFeat_filename;
+  /** @generated */
+  final int     casFeatCode_filename;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public String getFilename(int addr) {
+        if (featOkTst && casFeat_filename == null)
+      jcas.throwFeatMissing("filename", "OutputAnnotation");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_filename);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setFilename(int addr, String v) {
+        if (featOkTst && casFeat_filename == null)
+      jcas.throwFeatMissing("filename", "OutputAnnotation");
+    ll_cas.ll_setStringValue(addr, casFeatCode_filename, v);}
+    
+  
  
   /** @generated */
   final Feature casFeat_text;
@@ -56,7 +78,7 @@ public class Span_Type extends SelfAwareAnnotation_Type {
    */ 
   public String getText(int addr) {
         if (featOkTst && casFeat_text == null)
-      jcas.throwFeatMissing("text", "Span");
+      jcas.throwFeatMissing("text", "OutputAnnotation");
     return ll_cas.ll_getStringValue(addr, casFeatCode_text);
   }
   /** @generated
@@ -65,7 +87,7 @@ public class Span_Type extends SelfAwareAnnotation_Type {
    */    
   public void setText(int addr, String v) {
         if (featOkTst && casFeat_text == null)
-      jcas.throwFeatMissing("text", "Span");
+      jcas.throwFeatMissing("text", "OutputAnnotation");
     ll_cas.ll_setStringValue(addr, casFeatCode_text, v);}
     
   
@@ -77,9 +99,13 @@ public class Span_Type extends SelfAwareAnnotation_Type {
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */
-  public Span_Type(JCas jcas, Type casType) {
+  public OutputAnnotation_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
+
+ 
+    casFeat_filename = jcas.getRequiredFeatureDE(casType, "filename", "uima.cas.String", featOkTst);
+    casFeatCode_filename  = (null == casFeat_filename) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_filename).getCode();
 
  
     casFeat_text = jcas.getRequiredFeatureDE(casType, "text", "uima.cas.String", featOkTst);

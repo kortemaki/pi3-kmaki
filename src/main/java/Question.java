@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Mon Sep 21 10:12:56 EDT 2015 */
+/* First created by JCasGen Mon Sep 21 21:54:12 EDT 2015 */
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
@@ -8,18 +8,16 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 
-/** Subclass of TokenizedSpan which annotates a subset of a tokenization corresponding to an ngram of finite length n.
-
-Fields inherited from TokenizedSpan:	begin, end, annotator, text, tokens
+/** An annotation indicating a question.  Holds the question number as well as the info for that question's Span.
  * Updated by JCasGen Mon Sep 21 21:54:12 EDT 2015
  * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
  * @generated */
-public class Ngram extends TokenizedSpan {
+public class Question extends Span {
   /** @generated
    * @ordered 
    */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = JCasRegistry.register(Ngram.class);
+  public final static int typeIndexID = JCasRegistry.register(Question.class);
   /** @generated
    * @ordered 
    */
@@ -33,14 +31,14 @@ public class Ngram extends TokenizedSpan {
  
   /** Never called.  Disable default constructor
    * @generated */
-  protected Ngram() {/* intentionally empty block */}
+  protected Question() {/* intentionally empty block */}
     
   /** Internal - constructor used by generator 
    * @generated
    * @param addr low level Feature Structure reference
    * @param type the type of this Feature Structure 
    */
-  public Ngram(int addr, TOP_Type type) {
+  public Question(int addr, TOP_Type type) {
     super(addr, type);
     readObject();
   }
@@ -48,7 +46,7 @@ public class Ngram extends TokenizedSpan {
   /** @generated
    * @param jcas JCas to which this Feature Structure belongs 
    */
-  public Ngram(JCas jcas) {
+  public Question(JCas jcas) {
     super(jcas);
     readObject();   
   } 
@@ -58,7 +56,7 @@ public class Ngram extends TokenizedSpan {
    * @param begin offset to the begin spot in the SofA
    * @param end offset to the end spot in the SofA 
   */  
-  public Ngram(JCas jcas, int begin, int end) {
+  public Question(JCas jcas, int begin, int end) {
     super(jcas);
     setBegin(begin);
     setEnd(end);
@@ -77,25 +75,25 @@ public class Ngram extends TokenizedSpan {
  
     
   //*--------------*
-  //* Feature: n
+  //* Feature: qNumber
 
-  /** getter for n - gets The cardinality of the ngram identified by this TokenizedSpan.
+  /** getter for qNumber - gets The number associated with the question for this annotation.  Must be saved as a string to preserve "001" style format.
    * @generated
    * @return value of the feature 
    */
-  public int getN() {
-    if (Ngram_Type.featOkTst && ((Ngram_Type)jcasType).casFeat_n == null)
-      jcasType.jcas.throwFeatMissing("n", "Ngram");
-    return jcasType.ll_cas.ll_getIntValue(addr, ((Ngram_Type)jcasType).casFeatCode_n);}
+  public String getQNumber() {
+    if (Question_Type.featOkTst && ((Question_Type)jcasType).casFeat_qNumber == null)
+      jcasType.jcas.throwFeatMissing("qNumber", "Question");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Question_Type)jcasType).casFeatCode_qNumber);}
     
-  /** setter for n - sets The cardinality of the ngram identified by this TokenizedSpan. 
+  /** setter for qNumber - sets The number associated with the question for this annotation.  Must be saved as a string to preserve "001" style format. 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setN(int v) {
-    if (Ngram_Type.featOkTst && ((Ngram_Type)jcasType).casFeat_n == null)
-      jcasType.jcas.throwFeatMissing("n", "Ngram");
-    jcasType.ll_cas.ll_setIntValue(addr, ((Ngram_Type)jcasType).casFeatCode_n, v);}    
+  public void setQNumber(String v) {
+    if (Question_Type.featOkTst && ((Question_Type)jcasType).casFeat_qNumber == null)
+      jcasType.jcas.throwFeatMissing("qNumber", "Question");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Question_Type)jcasType).casFeatCode_qNumber, v);}    
   }
 
     

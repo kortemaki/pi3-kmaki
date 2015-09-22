@@ -11,10 +11,8 @@ import org.apache.uima.cas.Type;
 import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
-/** Subclass of SelfAwareAnnotation holding question and Answer Span annotations for a TestElement.
-
-Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
- * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
+/** A basic form for test element annotations.  Contains the number of this test elements' question and the correctness array for this test element's answers.
+ * Updated by JCasGen Mon Sep 21 21:54:12 EDT 2015
  * @generated */
 public class TestElementAnnotation_Type extends SelfAwareAnnotation_Type {
   /** @generated 
@@ -133,7 +131,7 @@ public class TestElementAnnotation_Type extends SelfAwareAnnotation_Type {
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
  
-    casFeat_question = jcas.getRequiredFeatureDE(casType, "question", "Span", featOkTst);
+    casFeat_question = jcas.getRequiredFeatureDE(casType, "question", "Question", featOkTst);
     casFeatCode_question  = (null == casFeat_question) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_question).getCode();
 
  

@@ -14,9 +14,9 @@ import org.apache.uima.cas.Feature;
 /** Subclass of SelfAwareAnnotation holding ngram annotations for a TestElement.
 
 Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
- * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
+ * Updated by JCasGen Mon Sep 21 21:54:12 EDT 2015
  * @generated */
-public class NgramAnnotation_Type extends SelfAwareAnnotation_Type {
+public class NgramAnnotation_Type extends TestElementAnnotation_Type {
   /** @generated 
    * @return the generator for this type
    */

@@ -11,8 +11,8 @@ import org.apache.uima.jcas.cas.TOP_Type;
 /** Subclass of SelfAwareAnnotation.  Annotates a span of text with a String that may encode information about the span of text.
 
 Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
- * Updated by JCasGen Mon Sep 21 11:48:38 EDT 2015
- * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/java/TestElementAnnotator.xml
+ * Updated by JCasGen Mon Sep 21 21:54:12 EDT 2015
+ * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI3/pi3-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
  * @generated */
 public class Span extends SelfAwareAnnotation {
   /** @generated
