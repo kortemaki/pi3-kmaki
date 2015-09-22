@@ -45,7 +45,7 @@ Fields inherited from Span: 	begin, end, annotator, text</description>
         <featureDescription>
           <name>tokens</name>
           <description>The tokens identified in the tokenization of this Span.</description>
-          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
           <elementType>Span</elementType>
           <multipleReferencesAllowed>true</multipleReferencesAllowed>
         </featureDescription>
@@ -74,8 +74,8 @@ Fields inherited from Span: begin, end, annotator, text</description>
       <features>
         <featureDescription>
           <name>ngrams</name>
-          <description>List of ngrams identified for this Span.</description>
-          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <description>Array of ngrams identified for this Span.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
           <elementType>Ngram</elementType>
           <multipleReferencesAllowed>true</multipleReferencesAllowed>
         </featureDescription>
@@ -101,32 +101,11 @@ Fields inherited from Span: 	begin, end, annotator, text</description>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>TestElementAnnotation</name>
-      <description>Subclass of SelfAwareAnnotation holding question and Answer Span annotations for a TestElement.
-
-Fields inherited from SelfAwareAnnotation: 	begin, end, annotator</description>
-      <supertypeName>SelfAwareAnnotation</supertypeName>
-      <features>
-        <featureDescription>
-          <name>question</name>
-          <description>Identifies the question for this TestElement.</description>
-          <rangeTypeName>Span</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>answers</name>
-          <description>Array holding annotations identifying each answer choice for this TestElement.</description>
-          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-          <elementType>Answer</elementType>
-          <multipleReferencesAllowed>true</multipleReferencesAllowed>
-        </featureDescription>
-      </features>
-    </typeDescription>
-    <typeDescription>
       <name>TokenAnnotation</name>
       <description>Subclass of SelfAwareAnnotation holding tokenization annotations for a TestElement.
 
 Fields inherited from SelfAwareAnnotation:	begin, end, annotator</description>
-      <supertypeName>SelfAwareAnnotation</supertypeName>
+      <supertypeName>TestElementAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>questionTokens</name>
@@ -147,7 +126,7 @@ Fields inherited from SelfAwareAnnotation:	begin, end, annotator</description>
       <description>Subclass of SelfAwareAnnotation holding ngram annotations for a TestElement.
 
 Fields inherited from SelfAwareAnnotation: 	begin, end, annotator</description>
-      <supertypeName>SelfAwareAnnotation</supertypeName>
+      <supertypeName>TestElementAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>questionNgrams</name>
@@ -168,13 +147,61 @@ Fields inherited from SelfAwareAnnotation: 	begin, end, annotator</description>
       <description>Subclass of SelfAwareAnnotation holding answer scoring annotations for a TestElement.
 
 Fields inherited from SelfAwareAnnotation: 	begin, end, annotator</description>
-      <supertypeName>SelfAwareAnnotation</supertypeName>
+      <supertypeName>TestElementAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>scores</name>
           <description>Array of scores assigned to each answer by the analysis engine.</description>
           <rangeTypeName>uima.cas.FloatArray</rangeTypeName>
           <multipleReferencesAllowed>true</multipleReferencesAllowed>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  <typeDescription>
+      <name>TestElementAnnotation</name>
+      <description>A basic form for test element annotations.  Contains the number of this test elements' question and the correctness array for this test element's answers.</description>
+      <supertypeName>SelfAwareAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>question</name>
+          <description>The Span associated with the question for this annotation.  Also contains the question number.</description>
+          <rangeTypeName>Question</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>answers</name>
+          <description>Array holding annotations identifying each answer choice for this TestElement.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>Answer</elementType>
+          <multipleReferencesAllowed>true</multipleReferencesAllowed>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>OutputAnnotation</name>
+      <description>A final annotation to hold the filename and contents of an output file.</description>
+      <supertypeName>TestElementAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>filename</name>
+          <description>The file to which this output will be written.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>text</name>
+          <description>The output to be written to the file.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>Question</name>
+      <description>An annotation indicating a question.  Holds the question number as well as the info for that question's Span.</description>
+      <supertypeName>Span</supertypeName>
+      <features>
+        <featureDescription>
+          <name>qNumber</name>
+          <description>The number associated with the question for this annotation.  Must be saved as a string to preserve "001" style format.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
