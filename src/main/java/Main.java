@@ -94,7 +94,7 @@ public class Main extends Thread
 			cpeDesc = UIMAFramework.getXMLParser().parseCpeDescription(new XMLInputSource("src/main/resources/cpeDescriptor.xml"));
 		} catch (InvalidXMLException | IOException e) {
 			System.err.println("Internal error when parsing CPE descriptor. Exiting..");
-			raise(e);
+			throw(e);
 			//System.exit(2);
 		}
 			

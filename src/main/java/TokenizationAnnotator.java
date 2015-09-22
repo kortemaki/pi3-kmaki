@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -102,19 +101,18 @@ public class TokenizationAnnotator extends CasAnnotator_ImplBase {
 		}
 		
 		// Finalize tokenized span output
-		FSList tokens = new FSList(jcas);
-		for(Span token : toks)
+		FSArray tokens = new FSArray(jcas,toks.size());
+		for(int i=0;i<toks.size();i++)
 		{
-			tokens.addToIndexes(token);
+			tokens.set(i, toks.get(i));
 		}
 		
-		
 		TokenizedSpan output = new TokenizedSpan();
-		output.setTokens(toks);
+		output.setTokens(tokens);
 		output.setBegin(begin);
 		output.setText(text);
 		output.setEnd(end);
-		output.setAnnotator(name);
+		output.setAnnotator(this.getClass().getName());
 		
 		return output;
 	}

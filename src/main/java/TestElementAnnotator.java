@@ -66,11 +66,12 @@ public class TestElementAnnotator extends CasAnnotator_ImplBase
 		while(question.find(pos))
 		{    	
 			// Annotate the question
-			Span q = new Span();
+			Question q = new Question();
 			int questionBegin = question.start();
 			pos = question.end();
 			q.setBegin(questionBegin);
 			q.setEnd(pos);
+			q.setQNumber(getQuestionNumber(aCas));
 			q.setText(text.substring(question.start()+2,question.end()));
 			q.setAnnotator(this.getClass().getName());
 			
@@ -115,5 +116,12 @@ public class TestElementAnnotator extends CasAnnotator_ImplBase
 			te.setAnnotator(this.getClass().getName());
 			te.addToIndexes();
 		}
+	}
+	
+	private String getQuestionNumber(CAS cas)
+	{
+		String[] path = cas.getSofaDataURI().split("\\\\/");
+		String ofinterest = path[path.length-1];
+		return ofinterest.substring(1,ofinterest.length()-4);
 	}
 }

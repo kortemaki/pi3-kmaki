@@ -51,7 +51,7 @@ public class NgramAnnotator extends CasAnnotator_ImplBase {
 	
 	public void initialize() throws ResourceInitializationException
 	{
-		this.n = (int) getUimaContext().getConfigParameterValue("NgramSize");
+		this.n = (int) getContext().getConfigParameterValue("NgramSize");
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -94,7 +94,6 @@ public class NgramAnnotator extends CasAnnotator_ImplBase {
 	{
 		
 		// Extract relevant fields from span
-		FSList tokList = tokens.getTokens();
 		int begin = tokens.getBegin();
 		int end = tokens.getEnd();
 		
@@ -104,30 +103,30 @@ public class NgramAnnotator extends CasAnnotator_ImplBase {
 		ngrams.setText(tokens.getText());
 		ngrams.setAnnotator(this.getClass().getName());
 		
-		//TODO: convert tokList to Span array
-		Span[] toks;
+		FSArray toks = tokens.getTokens();
+		int numNgrams = toks.size()+1-this.n;
 		
-		for(int i=0; i<toks.length+1-this.n; i++)
+		for(int i=0; i<numNgrams; i++)
 		{
 			//copy the relevant tokens into ngram
-			Span[] gram = new Span[this.n];
+			FSArray fstokens = new FSArray(jcas,this.n);
 			for(int j=0; j<this.n; j++)
 			{
-				gram[j] = toks[i+j];
+				fstokens.set(j, toks.get(i+j));
 			}
 
 			Ngram ngram = new Ngram();
 			ngram.setN(this.n);
-			ngram.setBegin(toks[i].getBegin());
-			ngram.setEnd(toks[i+this.n-1].getEnd());
-			ngram.setText(getTextForSpansIn(Arrays.copyOfRange(toks, i, i+this.n)));
+			ngram.setBegin(((Span) toks.get(i)).getBegin());
+			ngram.setEnd(((Span) toks.get(i+this.n-1)).getEnd());
+			ngram.setText(getTextForSpansIn((Span[]) Arrays.copyOfRange(toks.toArray(), i, i+this.n)));
 			ngram.setAnnotator(this.getClass().getName());
-			//TODO: convert gram to FSList();
 			
-			ngram.setTokens(gram);
+			ngram.setTokens(fstokens);
 			
+			ngrams.setNgrams(i,ngram);
 		}
-		
+		return ngrams;
 		
 	}
 	private String getTextForSpansIn(Span[] arr)
